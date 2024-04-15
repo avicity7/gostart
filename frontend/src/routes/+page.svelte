@@ -5,8 +5,11 @@
     const ws = new WebSocket("ws://localhost:3000/ws")
   
     ws.onmessage = (msg) => {
-      let data = JSON.parse(msg.data)
-      devices = data
+      let parts = msg.data.split(" ")
+      if (parts[0] == "data") {
+        let data = JSON.parse(parts[1])
+        devices = data
+      }
     }
   })
 </script>

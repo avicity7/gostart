@@ -41,6 +41,7 @@ func GetTestService() []byte {
 	if err != nil {
 		fmt.Println("Formatting error")
 	}
-	config.Melody.Broadcast(formatted)
+	header := []byte("data ")
+	config.Melody.Broadcast(append(header, formatted...))
 	return formatted
 }
