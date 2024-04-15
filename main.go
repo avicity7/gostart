@@ -13,8 +13,8 @@ import (
 func main() {
 	godotenv.Load()
 	r := chi.NewRouter()
-	config.Connect()
 	r.Use(middleware.Logger)
+	config.Connect(r)
 	routes.TestRoute(r)
 	http.ListenAndServe("127.0.0.1:3000", r)
 }
